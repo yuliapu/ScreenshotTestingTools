@@ -11,8 +11,8 @@ namespace Tests
         [BeforeFeature(Order = 0)]
         public void BeforeFeature()
         {
-            webDriver = new DriverHelper(CurrentPreferences.driver);
-            webDriver.Init();
+            webDriver = DriverHelper.Instance();
+            webDriver.Init(CurrentPreferences.driver, CurrentPreferences.screen);
         }
     }
 }

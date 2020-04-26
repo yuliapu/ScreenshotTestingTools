@@ -7,6 +7,7 @@ namespace ScreenshotTesting
     public class WebDriver
     {
         private readonly IWebDriver _driver;
+        private readonly string _url = "http://rozklad.kpi.ua";
 
         public WebDriver(DriverTypes driver)
         {
@@ -15,7 +16,7 @@ namespace ScreenshotTesting
 
         public void OpenPage()
         {
-            _driver.Navigate().GoToUrl("http://rozklad.kpi.ua/Schedules/ScheduleGroupSelection.aspx");
+            _driver.Navigate().GoToUrl(_url);
         }
     }
 }

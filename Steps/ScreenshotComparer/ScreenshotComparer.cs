@@ -2,9 +2,9 @@
 
 namespace ScreenshotTesting
 {
-    public class ScreenshotComparer
+    public static class ScreenshotComparer
     {
-        public double CompareScreenshots(string img1, string img2, string resultImage)
+        public static double CompareScreenshots(string img1, string img2, string resultImage)
         {
             MagickImage image1 = new MagickImage(img1);
             MagickImage image2 = new MagickImage(img2);
@@ -14,7 +14,7 @@ namespace ScreenshotTesting
             mresultImage.Write(resultImage);
 
             double diffPercent = diffPixel / (image1.Height * image1.Width) * 100;
-    
+
             return diffPercent;
         }
     }

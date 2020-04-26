@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\ConfigurationManager.cs" />
     <Compile Include="Configuration\CurrentPreferences.cs" />
     <Compile Include="Enums\DriverTypes.cs" />
     <Compile Include="Enums\ScreenSizes.cs" />

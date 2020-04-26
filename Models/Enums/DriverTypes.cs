@@ -5,7 +5,6 @@
         IE,
         Chrome,
         FireFox,
-        Opera,
-        Safari
+        Opera
     }
 }

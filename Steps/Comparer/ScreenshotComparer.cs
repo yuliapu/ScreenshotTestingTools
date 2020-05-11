@@ -19,15 +19,13 @@ namespace Steps.Comparer
             return diffPercent;
         }
 
-        public static double CompareScreenshotsDHash(string img1, string img2, string resultImage)
+        public static double CompareScreenshotsSimpleHash(string img1, string img2, string resultImage)
         {
             Image image1 = Image.FromFile(img1);
             Image image2 = Image.FromFile(img2);
-            var ahash1 = SimpleHash.Calculate(image1);
-            var ahash2 = SimpleHash.Calculate(image2);
-            bool areeq1 = ahash1.Equals(ahash2);
-            
-            return 0;
+            var hash1 = SimpleHash.Calculate(image1);
+            var hash2 = SimpleHash.Calculate(image2);
+            return HammingDistance.FindDistance(hash1, hash2);
         }
     }
 }

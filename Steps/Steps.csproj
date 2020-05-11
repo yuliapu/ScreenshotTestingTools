@@ -50,6 +50,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comparer\HammingDistance.cs" />
     <Compile Include="Comparer\SimpleHash.cs" />
     <Compile Include="DriverSteps\DriverHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

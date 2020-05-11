@@ -17,7 +17,7 @@ namespace Steps
 
         public double FindDiffPercent(string actualImg, string expectedImg, string resultImg)
         {
-            return ScreenshotComparer.CompareScreenshotsDHash(actualImg, expectedImg, resultImg);
+            return ScreenshotComparer.CompareScreenshotsSimpleHash(actualImg, expectedImg, resultImg);
         }
 
         public double FindDiffPercentIgnoreElement(string actualImg, string expectedImg, string resultImg, IWebElement element)

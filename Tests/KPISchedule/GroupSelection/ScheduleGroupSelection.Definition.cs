@@ -1,4 +1,5 @@
-﻿using Pages;
+﻿using FluentAssertions;
+using Pages;
 using Steps;
 using Steps.DriverSteps;
 using System.IO;
@@ -11,7 +12,9 @@ namespace Tests
     {
         private static StudentSchedulePage SchedulePage;
         private static readonly DriverHelper Driver = DriverHelper.Instance();
+        private static readonly VisualSteps VisualSteps = new VisualSteps();
         private string _actualResult = Names.ActualImagePath;
+        private string _expectedResult => Names.ExpectedImagePath;
 
         [Given(@"group selection page is opened")]
         public void GivenGroupSelectionPageIsOpened()
@@ -31,26 +34,21 @@ namespace Tests
         [When(@"I take screenshot of menu buttons")]
         public void WhenITakeScreenshotOfMenuButtons()
         {
-            Driver.TakeElementScreenshot(SchedulePage.LecturerScheduleMenuItem, _actualResult);
+            Driver.TakeElementScreenshot(SchedulePage.GroupSelectionControl, _actualResult);
         }
 
-        [When(@"I take screenshot and ignore element")]
-        public void WhenITakeScreenshotAndIgnoreElement()
+        [Then(@"Screenshots don't have visual difference ignoring logo")]
+        public void ThenScreenshotsDonTHaveVisualDifferenceIgnoringLogo()
         {
-            Driver.TakePageScreenshot(_actualResult);
-            string file1 = @".\TestData\Screenshots\1.png";
-            VisualSteps visualSteps = new VisualSteps();
-            visualSteps.FindDiffPercentIgnoreElement(Path.GetFullPath(file1), _actualResult, Names.DiffImagePath, SchedulePage.LecturerScheduleMenuItem);
+            double differencePercent = VisualSteps.FindDiffPercentIgnoreElement(_expectedResult, _actualResult, Names.DiffImagePath, SchedulePage.Logo);
+            differencePercent.Should().Be(0);
         }
 
         [Then(@"Screenshots don't have visual difference")]
         public void ThenScreenshotsDonTHaveVisualDifference()
         {
-            string file1 = @".\TestData\Screenshots\1.png";
-            VisualSteps visualSteps = new VisualSteps();
-            visualSteps.FindDiffPercent(Path.GetFullPath(file1), _actualResult, Names.DiffImagePath);
-
+            double differencePercent = VisualSteps.FindDiffPercent(_expectedResult, _actualResult, Names.DiffImagePath);
+            differencePercent.Should().Be(0);
         }
-
     }
 }

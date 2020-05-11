@@ -10,7 +10,7 @@ Scenario: Menu buttons
 	When I take screenshot of menu buttons
 	Then Screenshots don't have visual difference
 		
-Scenario: Hide j
+Scenario: Hide logo
 	Given group selection page is opened
-	When I take screenshot and ignore element
-	Then Screenshots don't have visual difference
+	When I take page screenshot
+	Then Screenshots don't have visual difference ignoring logo

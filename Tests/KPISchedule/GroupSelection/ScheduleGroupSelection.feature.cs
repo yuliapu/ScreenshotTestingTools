@@ -146,11 +146,11 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Hide j", SourceLine=12)]
-        public virtual void HideJ()
+        [TechTalk.SpecRun.ScenarioAttribute("Hide logo", SourceLine=12)]
+        public virtual void HideLogo()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Hide j", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Hide logo", null, ((string[])(null)));
 #line 13
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -175,10 +175,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("group selection page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 15
- testRunner.When("I take screenshot and ignore element", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I take page screenshot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 16
- testRunner.Then("Screenshots don\'t have visual difference", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Screenshots don\'t have visual difference ignoring logo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

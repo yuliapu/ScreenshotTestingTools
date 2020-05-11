@@ -4,13 +4,10 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Opera;
-using Pages;
 using Steps.Util;
-using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Threading;
 
 namespace Steps.DriverSteps
 {
@@ -18,7 +15,7 @@ namespace Steps.DriverSteps
     {
         private static DriverHelper _instance;
         public IWebDriver Driver { private set; get; }
-        private readonly string _url = "https://www.google.com/";
+        private readonly string _url = "http://rozklad.kpi.ua/";
         
         private DriverHelper() { }
 
@@ -35,15 +32,15 @@ namespace Steps.DriverSteps
          
             Driver.Manage().Window.Size =  
                 new System.Drawing.Size(
-                    EnumsHelper.GetAttribute<Common.Enums.Size>(windowSize).Width,
-                    EnumsHelper.GetAttribute<Common.Enums.Size>(windowSize).Height);
+                    EnumsHelper.GetWidth(windowSize),
+                    EnumsHelper.GetHeight(windowSize));
             var l = Driver.Manage().Window.Size.Height;
             var fl = Driver.Manage().Window.Size.Width;
         }
             
         public void Dispose()
         {
-            Driver.Dispose();
+            Driver.Quit();
         }
 
         public void OpenPage()

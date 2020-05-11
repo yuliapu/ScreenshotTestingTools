@@ -175,7 +175,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("group selection page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 15
- testRunner.When("I take screenshot of menu buttons", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I take screenshot and ignore element", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 16
  testRunner.Then("Screenshots don\'t have visual difference", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

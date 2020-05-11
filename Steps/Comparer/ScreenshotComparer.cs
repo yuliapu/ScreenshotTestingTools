@@ -1,6 +1,7 @@
 ﻿using ImageMagick;
 using Steps.Util;
 using System.Drawing;
+using System.IO;
 
 namespace Steps.Comparer
 {
@@ -23,7 +24,10 @@ namespace Steps.Comparer
         public static double CompareScreenshotsSimpleHash(string img1, string img2, string resultImage)
         {
             double diff = GetDifferencePercentSimpleHash(img1, img2);
-            if (diff != 0) ImageHelper.DrawDifferenceImage(img1, img2, resultImage);
+            if (diff != 0)
+            {
+                ImageHelper.DrawDifferenceImage(img1, img2, resultImage);
+            }
             return diff;
         }
 

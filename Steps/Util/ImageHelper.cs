@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using Common.Configuration;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
@@ -33,6 +34,13 @@ namespace Steps.Util
             return destImage;
         }
 
+        public static Bitmap ResizeImageDefault(Image image)
+        {
+            int wigth = EnumsHelper.GetAttribute<Common.Enums.Size>(CurrentPreferences.screen).Width - 14;
+            int height = EnumsHelper.GetAttribute<Common.Enums.Size>(CurrentPreferences.screen).Height - 132;
+            return ResizeImage(image, wigth, height);
+        }
+
         public static int CalculateWeightByAvgOfChanels(Color c)
         {
             return (c.R + c.G + c.B) / 3;
@@ -40,7 +48,7 @@ namespace Steps.Util
 
         public static string FillRectangle(string file, Rectangle rectangle)
         {
-            Image image = Image.FromFile(file);
+            Image image = ResizeImageDefault(Image.FromFile(file));
             Graphics graphics = Graphics.FromImage(image);
             var brush = new SolidBrush(Color.Black);
             graphics.FillRectangle(brush, rectangle);

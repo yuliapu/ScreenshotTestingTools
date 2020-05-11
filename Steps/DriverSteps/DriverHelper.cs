@@ -4,17 +4,21 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Opera;
+using Pages;
 using Steps.Util;
+using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Threading;
 
 namespace Steps.DriverSteps
 {
     public class DriverHelper
     {
         private static DriverHelper _instance;
-        private IWebDriver _driver;
-        private readonly string _url = "http://rozklad.kpi.ua";
+        public IWebDriver Driver { private set; get; }
+        private readonly string _url = "https://www.google.com/";
         
         private DriverHelper() { }
 
@@ -27,35 +31,43 @@ namespace Steps.DriverSteps
 
         public void Init(DriverTypes driver, ScreenSizes windowSize)
         {
-            _driver = GetDriver(driver);
-            _driver.Manage().Window.Size = 
+            Driver = GetDriver(driver);
+         
+            Driver.Manage().Window.Size =  
                 new System.Drawing.Size(
                     EnumsHelper.GetAttribute<Common.Enums.Size>(windowSize).Width,
                     EnumsHelper.GetAttribute<Common.Enums.Size>(windowSize).Height);
+            var l = Driver.Manage().Window.Size.Height;
+            var fl = Driver.Manage().Window.Size.Width;
         }
-
+            
         public void Dispose()
         {
-            _driver.Dispose();
+            Driver.Dispose();
         }
 
         public void OpenPage()
         {
-            _driver.Navigate().GoToUrl(_url);
+            Driver.Navigate().GoToUrl(_url);
+        }
+
+        public void OpenPage(string url)
+        {
+            Driver.Navigate().GoToUrl(url);
         }
 
         public void TakePageScreenshot(string fileName)
         {
-            Screenshot screenshot = ((ITakesScreenshot)_driver).GetScreenshot();
+            Screenshot screenshot = ((ITakesScreenshot)Driver).GetScreenshot();
             screenshot.SaveAsFile(fileName);
         }
 
         public void TakeElementScreenshot(IWebElement element, string fileName)
         {
-            Screenshot screenshot = ((ITakesScreenshot)_driver).GetScreenshot();
-            var pageBitmap = new Bitmap(new MemoryStream(screenshot.AsByteArray));
+            Screenshot screenshot = ((ITakesScreenshot)Driver).GetScreenshot();
+            var pageBitmap = ImageHelper.ResizeImageDefault(new Bitmap(new MemoryStream(screenshot.AsByteArray)));
             var elementScreenshot = pageBitmap.Clone(new Rectangle(element.Location, element.Size), pageBitmap.PixelFormat);
-            screenshot.SaveAsFile(fileName);
+            elementScreenshot.Save(fileName, ImageFormat.Png);
         }
 
         private IWebDriver GetDriver(DriverTypes driver)

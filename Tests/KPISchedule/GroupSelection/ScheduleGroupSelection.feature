@@ -12,5 +12,5 @@ Scenario: Menu buttons
 		
 Scenario: Hide j
 	Given group selection page is opened
-	When I take screenshot of menu buttons
+	When I take screenshot and ignore element
 	Then Screenshots don't have visual difference

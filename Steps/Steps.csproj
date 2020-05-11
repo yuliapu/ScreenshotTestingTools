@@ -67,6 +67,10 @@
       <Project>{0ffa2c49-4e54-4100-8caa-c4ec6922eb56}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pages\Pages.csproj">
+      <Project>{B9C614F5-499E-4422-A7DE-B972BEA9F81D}</Project>
+      <Name>Pages</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="DriverSteps\chromedriver.exe">

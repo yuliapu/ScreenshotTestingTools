@@ -5,6 +5,11 @@ Scenario: Full group selection page
 	When I take page screenshot
 	Then Screenshots don't have visual difference
 	
+Scenario: Full group selection page TO FAIL
+	Given lector selection page is opened
+	When I take page screenshot
+	Then Screenshots don't have visual difference
+
 Scenario: Menu buttons
 	Given group selection page is opened
 	When I take screenshot of menu buttons

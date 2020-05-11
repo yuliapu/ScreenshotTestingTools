@@ -144,6 +144,9 @@
     <Content Include="TestData\Screenshots\Full_group_selection_page_expected_1280x800.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestData\Screenshots\Full_group_selection_page_TO_FAIL_expected_1280x800.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\Screenshots\Hide_logo_expected_1024x738.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

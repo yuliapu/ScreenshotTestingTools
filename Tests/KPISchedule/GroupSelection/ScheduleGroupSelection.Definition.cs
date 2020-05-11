@@ -25,6 +25,15 @@ namespace Tests
             SchedulePage.OpenStudentSchedule();
         }
 
+        [Given(@"lector selection page is opened")]
+        public void GivenLectorSelectionPageIsOpened()
+        {
+            Driver.OpenPage();
+            SchedulePage = new StudentSchedulePage();
+            PageFactory<StudentSchedulePage>.Init(SchedulePage, Driver.Driver);
+            SchedulePage.OpenLecturerSchedule();
+        }
+
         [When(@"I take page screenshot")]
         public void WhenITakePageScreenshot()
         {

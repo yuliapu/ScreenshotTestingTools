@@ -48,5 +48,41 @@ namespace Steps.Util
             image.Save(newFilePath);
             return newFilePath;
         }
+
+        public static void DrawDifferenceImage(string file1, string file2, string resultfile)
+        {
+            Image image1 = Image.FromFile(file1);
+            Image image2 = Image.FromFile(file2);
+            Bitmap b1 = (Bitmap)image1;
+            Bitmap b2;
+
+            if (image2.Height != image1.Height || image2.Width != image1.Width)
+            {
+                b2 = ResizeImage(image2, image1.Width, image1.Height);
+            }
+            else b2 = (Bitmap)image2;
+            Bitmap result = new Bitmap(image1.Width, image1.Height);
+
+            Color ne_color = Color.Red;
+            for (int x = 0; x < result.Width; x++)
+            {
+                for (int y = 0; y < result.Height; y++)
+                {
+                    if (b1.GetPixel(x, y).Equals(b2.GetPixel(x, y)))
+                    {
+                        Color pixelColor = b1.GetPixel(x, y);
+                        var greyValue = CalculateWeightByAvgOfChanels(pixelColor) / 2;
+                        Color greyColor = Color.FromArgb(greyValue, greyValue, greyValue);
+                        result.SetPixel(x, y, greyColor);
+                    }
+                    else
+                    {
+                        result.SetPixel(x, y, ne_color);
+                    }
+                }
+            }
+
+            result.Save(resultfile, ImageFormat.Png);
+        }
     }
 }

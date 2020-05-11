@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace ScreenshotTesting.Enums
+namespace Common.Enums
 {
     public enum ScreenSizes
     {

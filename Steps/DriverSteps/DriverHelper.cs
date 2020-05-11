@@ -1,14 +1,14 @@
-﻿using OpenQA.Selenium;
+﻿using Common.Enums;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Opera;
-using ScreenshotTesting.Enums;
 using Steps.Util;
 using System.Drawing;
 using System.IO;
 
-namespace ScreenshotTesting
+namespace Steps.DriverSteps
 {
     public class DriverHelper
     {
@@ -30,8 +30,13 @@ namespace ScreenshotTesting
             _driver = GetDriver(driver);
             _driver.Manage().Window.Size = 
                 new System.Drawing.Size(
-                    EnumsHelper.GetAttribute<Enums.Size>(windowSize).Width,
-                    EnumsHelper.GetAttribute<Enums.Size>(windowSize).Height);
+                    EnumsHelper.GetAttribute<Common.Enums.Size>(windowSize).Width,
+                    EnumsHelper.GetAttribute<Common.Enums.Size>(windowSize).Height);
+        }
+
+        public void Dispose()
+        {
+            _driver.Dispose();
         }
 
         public void OpenPage()
@@ -57,7 +62,7 @@ namespace ScreenshotTesting
         {
             switch (driver)
             {
-                case DriverTypes.Chrome: return new ChromeDriver();
+                case DriverTypes.Chrome: return new ChromeDriver(@"C:\Users\ya\Source\Repos\ScreenshotTesting\Steps\bin\Debug");
                 case DriverTypes.FireFox: return new FirefoxDriver();
                 case DriverTypes.IE: return new InternetExplorerDriver();
                 case DriverTypes.Opera: return new OperaDriver();

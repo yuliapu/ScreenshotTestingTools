@@ -1,6 +1,6 @@
-﻿using ScreenshotTesting.Enums;
+﻿using Common.Enums;
 
-namespace ScreenshotTesting
+namespace Common.Configuration
 {
     public static class CurrentPreferences
     {

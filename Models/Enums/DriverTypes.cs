@@ -1,4 +1,4 @@
-﻿namespace ScreenshotTesting.Enums
+﻿namespace Common.Enums
 {
     public enum DriverTypes
     {

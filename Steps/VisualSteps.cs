@@ -1,5 +1,8 @@
 ﻿using OpenQA.Selenium;
-using ScreenshotTesting;
+using Steps.DriverSteps;
+using Steps.Comparer;
+using System.Drawing;
+using Steps.Util;
 
 namespace Steps
 {
@@ -14,7 +17,7 @@ namespace Steps
 
         public double FindDiffPercent(string actualImg, string expectedImg, string resultImg)
         {
-            return ScreenshotComparer.CompareScreenshots(actualImg, expectedImg, resultImg);
+            return ScreenshotComparer.CompareScreenshotsDHash(actualImg, expectedImg, resultImg);
         }
 
         public double FindDiffPercentIgnoreElement(string actualImg, string expectedImg, string resultImg, IWebElement element)
@@ -26,7 +29,7 @@ namespace Steps
 
         private string GetImageHideElement(string file, IWebElement element)
         {
-
+            return ImageHelper.FillRectangle(file, new Rectangle(element.Location, element.Size));
         }
     }
 }

@@ -57,6 +57,7 @@
     <Compile Include="Comparer\ScreenshotComparer.cs" />
     <Compile Include="Util\EnumsHelper.cs" />
     <Compile Include="Util\ImageHelper.cs" />
+    <Compile Include="Util\TestReportHelper.cs" />
     <Compile Include="VisualSteps.cs" />
   </ItemGroup>
   <ItemGroup>

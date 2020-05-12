@@ -127,6 +127,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Default.srprofile" />
     <None Include="KPISchedule\GroupSelection\ScheduleGroupSelection.feature" />
     <None Include="packages.config" />
     <None Include="runtests.cmd" />

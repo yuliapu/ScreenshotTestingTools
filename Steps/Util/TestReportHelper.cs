@@ -27,13 +27,19 @@ namespace Steps.Util
                 "<html> " +
                 "<head>" +
                 "<style>" +
-                "table,th,td{ border: 1px solid black; border-collapse: collapse;}" +
+                ".filter details + details { margin-top: 1em; } " +
+                "body{ font-family: verdana;}" +
+                "img { width: 100%; }" +
+                "table,th,td{ border: 1px solid black; border-collapse: collapse; background-color: LavenderBlush;}" +
+                "table#screenshots{ width: 100%;  background-color: White;}" +
                 "th,td{ padding:10px; text-align:left;}" +
                 "</style>" +
                 "</head>" +
                 "<body>" +
-                $"<h1>TestReport from {DateTime.Now}</h1>" +
+                $"<h1>Test Report from {DateTime.Now}</h1>" +
+                "<hr noshade=\"noshade\">" +
                 "<h2>Summary</h2>" +
+                "<hr noshade=\"noshade\">" + 
                 "<h2>Tests</h2>" +
                 "</body>" +
                 "</html>";
@@ -50,11 +56,11 @@ namespace Steps.Util
                 "</tr> " +
                 "<tr> " +
                 "<th>Passed</th> " +
-                $"<td>{_totalPassedCount}</td> " +
+                $"<td style=\"color: SeaGreen; \">{_totalPassedCount}</td> " +
                 "</tr> " +
                 "<tr> " +
                 "<th>Failed</th> " +
-                $"<td>{_totalTestsCount - _totalPassedCount - _totalSkippedCount}</td> " +
+                $"<td style=\"color: DarkRed; \">{_totalTestsCount - _totalPassedCount - _totalSkippedCount}</td> " +
                 "</tr> " +
                 "<tr> " +
                 "<th>Skipped</th> " +
@@ -62,7 +68,7 @@ namespace Steps.Util
                 "</tr> " +
                 "<tr> " +
                 "<th>Success rate</th>" +
-                $"<td>{passRate}</td> " +
+                $"<td>{passRate}%</td> " +
                 "</tr> " +
                 "<tr> " +
                 "<th>Total time</th> " +
@@ -73,10 +79,11 @@ namespace Steps.Util
         }
 
         public static void AddTestSummary(string testName, string result, string error, TimeSpan duration,
-            string actualResult, string expectedResult, string diffImage = null)
+            string actualResult, string expectedResult, string diffImage)
         {
             _totalTestsCount++;
-            var testSummary = "<h3>{testTitle}</h3> " +
+
+            var testSummary = $"<h3>{_totalTestsCount}. {testName}</h3> " +
                 "<table> " +
                 "<tr> " +
                 "<th>Result</th> " +
@@ -84,11 +91,29 @@ namespace Steps.Util
                 "<th>Duration</th> " +
                 "</tr> " +
                 "<tr> " +
-                "<td>{}</td> " +
-                "<td>{}</td> " +
-                "<td>{}</td> " +
+                $"<td>{result}</td> " +
+                $"<td>{error}</td> " +
+                $"<td>{duration}</td> " +
                 "</tr> " +
                 "</table>" +
+                "<details>"+
+                "<summary>" +
+                "Screenshots" +
+                "</summary>"+
+                "<table id=\"screenshots\"> " +
+                "<tr> " +
+                "<th>Expected</th> " +
+                "<th>Actual</th> " +
+                "<th>Difference</th> " +
+                "</tr> " +
+                "<tr> " +
+                $"<td><img src={expectedResult}></td> " +
+                $"<td><img src={actualResult}></td> " +
+                $"<td><img src={diffImage}></td> " +
+                "</tr> " +
+                "</table>" +
+                "</details>" +
+                "<hr noshade=\"noshade\">" +
                 "</body>" +
                 "</html>";
             _reportContent = _reportContent.Replace("</body></html>", testSummary);

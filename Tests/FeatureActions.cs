@@ -86,8 +86,8 @@ namespace Tests
             string error = currentTest.TestError?.Message;
             TimeSpan duration = scenarioWatch.Elapsed;
 
-            TestReportHelper.AddTestSummary(Names.TestTitle, result, error, duration,
-                _actualResult, _expectedResult, File.Exists(_differenceImage) ? _differenceImage : null);
+            TestReportHelper.AddTestSummary(Names.TestTitle, result, error == null ? "-" : error, duration,
+                _actualResult, _expectedResult, File.Exists(_differenceImage) ? _differenceImage : string.Empty);
         }
     }
 }

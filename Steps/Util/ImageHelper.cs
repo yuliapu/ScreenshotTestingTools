@@ -52,7 +52,7 @@ namespace Steps.Util
             Graphics graphics = Graphics.FromImage(image);
             var brush = new SolidBrush(Color.Black);
             graphics.FillRectangle(brush, rectangle);
-            string newFilePath = file.Insert(file.IndexOf('.'), "_ignored");
+            string newFilePath = file.Replace(".png", "_ignored.png");
             image.Save(newFilePath);
             return newFilePath;
         }

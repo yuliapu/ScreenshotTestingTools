@@ -4,11 +4,6 @@ Scenario: Full group selection page
 	Given group selection page is opened
 	When I take page screenshot
 	Then Screenshots don't have visual difference
-	
-Scenario: Full group selection page TO FAIL
-	Given lector selection page is opened
-	When I take page screenshot
-	Then Screenshots don't have visual difference
 
 Scenario: Menu buttons
 	Given group selection page is opened
@@ -17,5 +12,10 @@ Scenario: Menu buttons
 		
 Scenario: Hide logo
 	Given group selection page is opened
+	When I take page screenshot
+	Then Screenshots don't have visual difference ignoring logo
+	   	
+Scenario: Hide logo TO FAIL
+	Given lector selection page is opened
 	When I take page screenshot
 	Then Screenshots don't have visual difference ignoring logo

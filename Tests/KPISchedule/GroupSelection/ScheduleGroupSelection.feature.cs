@@ -108,11 +108,11 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Full group selection page TO FAIL", SourceLine=7)]
-        public virtual void FullGroupSelectionPageTOFAIL()
+        [TechTalk.SpecRun.ScenarioAttribute("Menu buttons", SourceLine=7)]
+        public virtual void MenuButtons()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Full group selection page TO FAIL", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Menu buttons", null, ((string[])(null)));
 #line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -134,10 +134,10 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 9
- testRunner.Given("lector selection page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("group selection page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 10
- testRunner.When("I take page screenshot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I take screenshot of menu buttons", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
  testRunner.Then("Screenshots don\'t have visual difference", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -146,11 +146,11 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Menu buttons", SourceLine=12)]
-        public virtual void MenuButtons()
+        [TechTalk.SpecRun.ScenarioAttribute("Hide logo", SourceLine=12)]
+        public virtual void HideLogo()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Menu buttons", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Hide logo", null, ((string[])(null)));
 #line 13
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -175,20 +175,20 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("group selection page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 15
- testRunner.When("I take screenshot of menu buttons", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I take page screenshot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 16
- testRunner.Then("Screenshots don\'t have visual difference", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Screenshots don\'t have visual difference ignoring logo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Hide logo", SourceLine=17)]
-        public virtual void HideLogo()
+        [TechTalk.SpecRun.ScenarioAttribute("Hide logo TO FAIL", SourceLine=17)]
+        public virtual void HideLogoTOFAIL()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Hide logo", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Hide logo TO FAIL", null, ((string[])(null)));
 #line 18
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -210,7 +210,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 19
- testRunner.Given("group selection page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("lector selection page is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 20
  testRunner.When("I take page screenshot", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

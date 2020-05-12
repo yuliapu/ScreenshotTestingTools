@@ -110,6 +110,7 @@
     <Compile Include="KPISchedule\GroupSelection\ScheduleGroupSelection.Definition.cs" />
     <Compile Include="Names.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VisualTestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Models\Common.csproj">
@@ -144,7 +145,7 @@
     <Content Include="TestData\Screenshots\Full_group_selection_page_expected_1280x800.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\Screenshots\Full_group_selection_page_TO_FAIL_expected_1280x800.png">
+    <Content Include="TestData\Screenshots\Hide_logo_TO_FAIL_expected_1280x800.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestData\Screenshots\Hide_logo_expected_1024x738.png">

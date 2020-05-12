@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using Pages;
 using Steps;
+using System;
 using TechTalk.SpecFlow;
-
 namespace Tests
 {
     [Binding, Scope(Feature = "ScheduleGroupSelection")]

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.props" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.props')" />
   <Import Project="..\packages\SpecRun.SpecFlow.3-1-0.3.2.22\build\SpecRun.SpecFlow.3-1-0.props" Condition="Exists('..\packages\SpecRun.SpecFlow.3-1-0.3.2.22\build\SpecRun.SpecFlow.3-1-0.props')" />
   <Import Project="..\packages\SpecRun.Runner.3.2.22\build\SpecRun.Runner.props" Condition="Exists('..\packages\SpecRun.Runner.3.2.22\build\SpecRun.Runner.props')" />
@@ -18,6 +19,21 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +59,12 @@
     <Reference Include="Cucumber.Messages, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b10c5988214f940c, processorArchitecture=MSIL">
       <HintPath>..\packages\Cucumber.Messages.6.0.1\lib\net45\Cucumber.Messages.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="FluentAssertions, Version=5.10.3.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.5.10.3\lib\net45\FluentAssertions.dll</HintPath>
     </Reference>
@@ -56,6 +78,7 @@
       <HintPath>..\packages\SpecRun.SpecFlow.3-1-0.3.2.22\lib\net45\SpecRun.Runtime.SpecFlowPlugin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -110,6 +133,11 @@
     <Compile Include="KPISchedule\GroupSelection\ScheduleGroupSelection.Definition.cs" />
     <Compile Include="Names.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="VisualTestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -127,9 +155,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Default.srprofile" />
     <None Include="KPISchedule\GroupSelection\ScheduleGroupSelection.feature" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="runtests.cmd" />
     <None Include="SpecRunTestProfile.xsd">
       <SubType>Designer</SubType>
@@ -138,8 +171,24 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestData\DB\dbo.Table.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\DB\testresults.ldf" />
+    <Content Include="TestData\DB\testresults.mdf" />
     <Content Include="TestData\Screenshots\Full_group_selection_page_expected_1024x738.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -162,6 +211,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -176,10 +226,13 @@
     <Error Condition="!Exists('..\packages\SpecFlow.3.1.97\build\SpecFlow.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.3.1.97\build\SpecFlow.targets'))" />
     <Error Condition="!Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.props'))" />
     <Error Condition="!Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.NET.Test.Sdk.15.0.0\build\net45\Microsoft.Net.Test.Sdk.targets" Condition="Exists('..\packages\Microsoft.NET.Test.Sdk.15.0.0\build\net45\Microsoft.Net.Test.Sdk.targets')" />
   <Import Project="..\packages\SpecRun.Runner.3.2.22\build\SpecRun.Runner.targets" Condition="Exists('..\packages\SpecRun.Runner.3.2.22\build\SpecRun.Runner.targets')" />
   <Import Project="..\packages\SpecRun.SpecFlow.3-1-0.3.2.22\build\SpecRun.SpecFlow.3-1-0.targets" Condition="Exists('..\packages\SpecRun.SpecFlow.3-1-0.3.2.22\build\SpecRun.SpecFlow.3-1-0.targets')" />
   <Import Project="..\packages\SpecFlow.3.1.97\build\SpecFlow.targets" Condition="Exists('..\packages\SpecFlow.3.1.97\build\SpecFlow.targets')" />
   <Import Project="..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.targets" Condition="Exists('..\packages\SpecFlow.Tools.MsBuild.Generation.3.1.97\build\SpecFlow.Tools.MsBuild.Generation.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

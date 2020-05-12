@@ -1,6 +1,7 @@
 ﻿using Common.Configuration;
 using Steps.DriverSteps;
 using Steps.Util;
+using Steps.Util.DB;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -13,7 +14,7 @@ namespace Tests
     {
         private static DriverHelper webDriver;
         private static Stopwatch testRunWatch;
-        private static Stopwatch scenarioWatch;
+        private static TestResultModel TestResultModel;
         
         [BeforeTestRun(Order = 0)]
         public static void BeforeTestRunCreateDir()
@@ -68,26 +69,42 @@ namespace Tests
         [BeforeScenario(Order = 0)]
         public static void BeforeScenarioStartWatch()
         {
-            scenarioWatch = new Stopwatch();
-            scenarioWatch.Start();
+            TestResultModel = new TestResultModel
+            {
+                StartTime = DateTime.Now
+            };
         }
 
         [AfterScenario(Order = 0)]
         public static void AfterScenarioStopWatch()
         {
-            scenarioWatch.Stop();
+            TestResultModel.EndTime = DateTime.Now;
         }
 
         [AfterScenario(Order = 1)]
         public static void AfterScenarioWriteToReport()
         {
             ScenarioContext currentTest = ScenarioContext.Current;
-            string result = currentTest.ScenarioExecutionStatus.ToString();
-            string error = currentTest.TestError?.Message;
-            TimeSpan duration = scenarioWatch.Elapsed;
+            TestResultModel.FeatureName = FeatureContext.Current.FeatureInfo.Title;
+            TestResultModel.ScenarioName = Names.TestTitle;
+            TestResultModel.Result = currentTest.ScenarioExecutionStatus.ToString();
+            TestResultModel.ErrorMessage = currentTest.TestError?.Message;
 
-            TestReportHelper.AddTestSummary(Names.TestTitle, result, error == null ? "-" : error, duration,
-                _actualResult, _expectedResult, File.Exists(_differenceImage) ? _differenceImage : string.Empty);
+            TimeSpan duration = TestResultModel.EndTime - TestResultModel.StartTime;
+
+            TestReportHelper.AddTestSummary(TestResultModel.ScenarioName,
+                TestResultModel.Result,
+                TestResultModel.ErrorMessage ?? "-",
+                duration,
+                _actualResult,
+                _expectedResult, 
+                File.Exists(_differenceImage) ? _differenceImage : string.Empty);
+        }
+        
+        [AfterScenario(Order = 2)]
+        public static void AfterScenarioWriteToTable()
+        {
+            DBHelper.AddTestResult(TestResultModel);
         }
     }
 }

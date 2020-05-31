@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Tests.FeatureActions">
+    <Position X="0.5" Y="0.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ApAAAABAAAAAAAAIRAAAAAgAACAAAIAACBAQSAAECAI=</HashCode>
+      <FileName>FeatureActions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tests.ScheduleGroupSelection">
+    <Position X="3.25" Y="4" Width="4.25" />
+    <InheritanceLine Type="Tests.VisualTestsBase" FixedToPoint="true">
+      <Path>
+        <Point X="5.375" Y="3.334" />
+        <Point X="5.375" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAABAABAQAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>KPISchedule\GroupSelection\ScheduleGroupSelection.Definition.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="SchedulePage" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Tests.Names">
+    <Position X="8" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgABAAgAAECAQAAAkEAAAAAAAAAAIIAAIMIAAAIAA=</HashCode>
+      <FileName>Names.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tests.VisualTestsBase">
+    <Position X="3.75" Y="0.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAIEAEgAAAAAAAAAAAAAAAAAAAgAAAACAAAAAABAA=</HashCode>
+      <FileName>VisualTestsBase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Driver" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Steps.DriverSteps.DriverHelper">
+    <Position X="8" Y="0.75" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Pages.StudentSchedulePage">
+    <Position X="3.75" Y="6.5" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

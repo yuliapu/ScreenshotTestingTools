@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Configuration;
+using System;
 using System.IO;
 using System.Text;
 
@@ -37,6 +38,7 @@ namespace Steps.Util
                 "</head>" +
                 "<body>" +
                 $"<h1>Test Report from {DateTime.Now}</h1>" +
+                $"<h3>{CurrentPreferences.driver}, {EnumsHelper.GetDescription(CurrentPreferences.screen)}</h3>" +
                 "<hr noshade=\"noshade\">" +
                 "<h2>Summary</h2>" +
                 "<hr noshade=\"noshade\">" + 

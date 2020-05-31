@@ -1,23 +1,31 @@
-﻿using System;
+﻿using Steps.Util.DB.Models;
 
 namespace Steps.Util.DB
 {
     public static class DBHelper
     {
-        public static void AddTestResult(TestResultModel resultModel)
+        public static void AddTestResult(Feature feature, Scenario scenario, Browser browser,
+            Screen screen, ResultStatus resultStatus, ExecutedTest executedTest)
         {
             using (TestResultContext db = new TestResultContext())
             {
-                db.TestResults.Add(resultModel);
-                db.SaveChanges();   
-            }
-            using (TestResultContext db = new TestResultContext())
-            {
-                var users = db.TestResults;
-                foreach (TestResultModel u in users)
-                {
-                    Console.WriteLine("{0}.{1} - {2}", u.Id, u.EndTime, u.FeatureName);
-                }
+                db.Features.Add(feature);
+                db.SaveChanges();  
+
+                db.Scenarios.Add(scenario);
+                db.SaveChanges();  
+
+                db.Browsers.Add(browser);
+                db.SaveChanges();  
+
+                db.Screens.Add(screen);
+                db.SaveChanges();  
+
+                db.ResultStatuses.Add(resultStatus);
+                db.SaveChanges();
+
+                db.ExecutedTests.Add(executedTest);
+                db.SaveChanges();
             }
         }
     }

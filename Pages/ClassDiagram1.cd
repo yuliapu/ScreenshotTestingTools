@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Pages.PageFactory&lt;T&gt;">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>PageFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pages.ScheduleBasePage">
+    <Position X="3.75" Y="1.75" Width="2.5" />
+    <AssociationLine Name="StudentScheduleMenuItem" Type="OpenQA.Selenium.IWebElement" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.344" Y="3.238" />
+        <Point X="4.344" Y="3.875" />
+        <Point X="2.25" Y="3.875" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="LecturerScheduleMenuItem" Type="OpenQA.Selenium.IWebElement" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.688" Y="3.238" />
+        <Point X="4.688" Y="4.188" />
+        <Point X="2.25" Y="4.188" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Logo" Type="OpenQA.Selenium.IWebElement" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.016" Y="3.238" />
+        <Point X="4.016" Y="3.562" />
+        <Point X="2.25" Y="3.562" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="SessionScheduleMenuItem" Type="OpenQA.Selenium.IWebElement" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.875" Y="3.238" />
+        <Point X="4.875" Y="4.566" />
+        <Point X="2" Y="4.566" />
+        <Point X="2" Y="4.191" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAQAAAgAAAAAAAgAgAAAACAAAAAAAEAA=</HashCode>
+      <FileName>ScheduleBasePage.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="StudentScheduleMenuItem" />
+      <Property Name="LecturerScheduleMenuItem" />
+      <Property Name="Logo" />
+      <Property Name="SessionScheduleMenuItem" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Pages.StudentSchedulePage">
+    <Position X="0.5" Y="2" Width="2.5" />
+    <InheritanceLine Type="Pages.ScheduleBasePage" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="3.75" Y="2.5" />
+        <Point X="3" Y="2.5" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="GroupSelectionControl" Type="OpenQA.Selenium.IWebElement">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-1.975" Y="0.152" Height="0.182" Width="1.823" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>StudentSchedulePage.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GroupSelectionControl" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="OpenQA.Selenium.IWebElement" Collapsed="true">
+    <Position X="0.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

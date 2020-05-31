@@ -2,6 +2,7 @@
 using Steps.DriverSteps;
 using Steps.Util;
 using Steps.Util.DB;
+using Steps.Util.DB.Models;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -14,7 +15,12 @@ namespace Tests
     {
         private static DriverHelper webDriver;
         private static Stopwatch testRunWatch;
-        private static TestResultModel TestResultModel;
+        private static Scenario Scenario;
+        private static Feature Feature;
+        private static ResultStatus ResultStatus;
+        private static ExecutedTest ExecutedTest;
+        private static Screen Screen;
+        private static Browser Browser;
         
         [BeforeTestRun(Order = 0)]
         public static void BeforeTestRunCreateDir()
@@ -69,32 +75,44 @@ namespace Tests
         [BeforeScenario(Order = 0)]
         public static void BeforeScenarioStartWatch()
         {
-            TestResultModel = new TestResultModel
+            Feature = new Feature();
+            Scenario = new Scenario();
+            ResultStatus = new ResultStatus();
+            Browser = new Browser() { BrowserName = CurrentPreferences.driver.ToString() };
+            Screen = new Screen() { Size = EnumsHelper.GetDescription(CurrentPreferences.screen) };
+
+            ExecutedTest = new ExecutedTest
             {
-                StartTime = DateTime.Now
+                StartTime = DateTime.Now,
+              Browser = Browser,
+              Screen = Screen
             };
         }
 
         [AfterScenario(Order = 0)]
         public static void AfterScenarioStopWatch()
         {
-            TestResultModel.EndTime = DateTime.Now;
+            ExecutedTest.EndTime = DateTime.Now;
         }
 
         [AfterScenario(Order = 1)]
         public static void AfterScenarioWriteToReport()
         {
             ScenarioContext currentTest = ScenarioContext.Current;
-            TestResultModel.FeatureName = FeatureContext.Current.FeatureInfo.Title;
-            TestResultModel.ScenarioName = Names.TestTitle;
-            TestResultModel.Result = currentTest.ScenarioExecutionStatus.ToString();
-            TestResultModel.ErrorMessage = currentTest.TestError?.Message;
+            Feature.FeatureName = FeatureContext.Current.FeatureInfo.Title;
+            Scenario.ScenarioName = Names.TestTitle;
+            Scenario.Feature = Feature;
+            ExecutedTest.Scenario = Scenario;
+            ResultStatus.TestStatus = currentTest.ScenarioExecutionStatus.ToString();
+            ExecutedTest.ResultStatus = ResultStatus;
 
-            TimeSpan duration = TestResultModel.EndTime - TestResultModel.StartTime;
+            ExecutedTest.ErrorMessage = currentTest.TestError?.Message;
 
-            TestReportHelper.AddTestSummary(TestResultModel.ScenarioName,
-                TestResultModel.Result,
-                TestResultModel.ErrorMessage ?? "-",
+            TimeSpan duration = ExecutedTest.EndTime - ExecutedTest.StartTime;
+
+            TestReportHelper.AddTestSummary(Scenario.ScenarioName,
+                ResultStatus.TestStatus,
+                ExecutedTest.ErrorMessage ?? "-",
                 duration,
                 _actualResult,
                 _expectedResult, 
@@ -104,7 +122,7 @@ namespace Tests
         [AfterScenario(Order = 2)]
         public static void AfterScenarioWriteToTable()
         {
-            DBHelper.AddTestResult(TestResultModel);
+            DBHelper.AddTestResult(Feature, Scenario, Browser, Screen, ResultStatus, ExecutedTest);
         }
     }
 }

@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Steps.Comparer.HammingDistance">
+    <Position X="7.25" Y="11" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Comparer\HammingDistance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steps.Comparer.ScreenshotComparer">
+    <Position X="3.75" Y="9.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Comparer\ScreenshotComparer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steps.Comparer.SimpleHash">
+    <Position X="7.25" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Comparer\SimpleHash.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steps.DriverSteps.DriverHelper">
+    <Position X="3.75" Y="11.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACAAAAAAAAAAAAAAAAYAgAAASAACAAgAAAE=</HashCode>
+      <FileName>DriverSteps\DriverHelper.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Driver" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Steps.Util.DB.DBHelper">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Util\DB\DBHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steps.Util.DB.TestResultContext">
+    <Position X="2.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAhAAAAAAAAAAAAAIAAAAAEAAI=</HashCode>
+      <FileName>Util\DB\TestResultContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steps.Util.DB.Models.Browser">
+    <Position X="0.5" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Util\DB\Models\Browser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steps.Util.DB.Models.ExecutedTest">
+    <Position X="0.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CQACAAAAAAAAAAAARAAAAAAAIAAgAAACAAAAIAgEAAI=</HashCode>
+      <FileName>Util\DB\Models\ExecutedTest.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Browser" />
+      <Property Name="ResultStatus" />
+      <Property Name="Scenario" />
+      <Property Name="Screen" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Steps.Util.DB.Models.Feature">
+    <Position X="7" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAI=</HashCode>
+      <FileName>Util\DB\Models\Feature.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steps.Util.DB.Models.ResultStatus">
+    <Position X="3.75" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Util\DB\Models\ResultStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steps.Util.DB.Models.Scenario">
+    <Position X="7" Y="2" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAACAAAAAAAAQAgAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Util\DB\Models\Scenario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Feature" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Steps.Util.DB.Models.Screen">
+    <Position X="3.75" Y="4" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAgCAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Util\DB\Models\Screen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steps.Util.EnumsHelper">
+    <Position X="0.5" Y="9.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAABAAAAAAAIAAAAAAEAAAAA=</HashCode>
+      <FileName>Util\EnumsHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steps.Util.ImageHelper">
+    <Position X="9.5" Y="9.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAABIAAAAAAAAAAABAAAAAAAAAAE=</HashCode>
+      <FileName>Util\ImageHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steps.Util.TestReportHelper">
+    <Position X="0.5" Y="11.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAQIAAABAAAQAAAAAAAAAgAAAEAAAAEAAAQAAA=</HashCode>
+      <FileName>Util\TestReportHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Steps.VisualSteps">
+    <Position X="7.75" Y="12.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAIAAAAEAIAAEAAAAAAA=</HashCode>
+      <FileName>VisualSteps.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="driver" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="OpenQA.Selenium.IWebDriver" Collapsed="true">
+    <Position X="4" Y="15" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
